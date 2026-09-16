@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, forkJoin, map } from 'rxjs';
 
-import { ContractType, Instrument, MarketData, Order, OrdersResponse } from './api.domain';
+import { ContractType, Instrument, MarketData, Order, OrdersResponse } from '../api.domain';
 
 const API_BASE_URL = 'https://geeksoft.pl/assets/2026-task';
 
