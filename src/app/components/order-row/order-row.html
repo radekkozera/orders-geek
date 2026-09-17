@@ -6,4 +6,13 @@
 <td>{{ order().openPrice }}</td>
 <td>{{ order().swap }}</td>
 <td>{{ order().profit ?? '—' }}</td>
-<td></td>
+<td>
+  <button
+    type="button"
+    class="remove"
+    [attr.aria-label]="'Remove order ' + order().id"
+    (click)="onRemove()"
+  >
+    ✕
+  </button>
+</td>

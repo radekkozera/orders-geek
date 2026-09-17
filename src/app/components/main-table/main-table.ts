@@ -21,4 +21,13 @@ export class MainTable {
       symbols.includes(symbol) ? symbols.filter((s) => s !== symbol) : [...symbols, symbol],
     );
   }
+
+  protected onRemoveOrder(id: number): void {
+    this.state.removeOrder(id);
+  }
+
+  protected onRemoveGroup(symbol: string): void {
+    this.state.removeGroup(symbol);
+    this.expanded.update((symbols) => symbols.filter((s) => s !== symbol));
+  }
 }

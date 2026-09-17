@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 import { OrderRow as OrderRowData } from '../../services/state/state.domain';
 
@@ -11,4 +11,9 @@ import { OrderRow as OrderRowData } from '../../services/state/state.domain';
 })
 export class OrderRow {
   public readonly order = input.required<OrderRowData>();
+  public readonly remove = output<number>();
+
+  protected onRemove(): void {
+    this.remove.emit(this.order().id);
+  }
 }

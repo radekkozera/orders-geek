@@ -6,4 +6,13 @@
 <td>{{ group().avgOpenPrice }}</td>
 <td>{{ group().swap }}</td>
 <td>{{ group().profit ?? '—' }}</td>
-<td></td>
+<td>
+  <button
+    type="button"
+    class="remove"
+    [attr.aria-label]="'Remove all ' + group().symbol + ' orders'"
+    (click)="onRemove($event)"
+  >
+    ✕
+  </button>
+</td>
