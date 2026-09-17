@@ -1,0 +1,9 @@
+<td></td>
+<td>{{ order().id }}</td>
+<td>{{ order().side }}</td>
+<td>{{ order().size }}</td>
+<td>{{ order().openTime | date: 'dd.MM.yyyy HH:mm:ss' }}</td>
+<td>{{ order().openPrice }}</td>
+<td>{{ order().swap }}</td>
+<td>{{ order().profit ?? '—' }}</td>
+<td></td>

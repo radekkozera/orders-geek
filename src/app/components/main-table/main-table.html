@@ -1,0 +1,29 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Order ID</th>
+      <th>Side</th>
+      <th>Size</th>
+      <th>Open Time</th>
+      <th>Open Price</th>
+      <th>Swap</th>
+      <th>Profit</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (group of groups(); track group.symbol) {
+      <app-order-group-row [group]="group" (click)="onToggle(group.symbol)" />
+      @if (expanded().includes(group.symbol)) {
+        @for (order of group.orders; track order.id) {
+          <app-order-row [order]="order" />
+        }
+      }
+    } @empty {
+      <tr>
+        <td colspan="9">No orders</td>
+      </tr>
+    }
+  </tbody>
+</table>
