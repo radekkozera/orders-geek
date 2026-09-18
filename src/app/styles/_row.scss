@@ -1,0 +1,51 @@
+td {
+  padding: 0.7rem 0.75rem;
+  text-align: left;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.numeric {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.profit-positive {
+  color: var(--profit-positive);
+}
+
+.profit-negative {
+  color: var(--profit-negative);
+}
+
+.actions {
+  width: 3rem;
+  text-align: left;
+}
+
+.remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 26px;
+  height: 26px;
+  border: 0;
+  background: none;
+  padding: 0 0 0 4px;
+  color: var(--accent);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 4px;
+
+  &:hover {
+    background: var(--row-hover);
+  }
+}
+
+.remove-icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}

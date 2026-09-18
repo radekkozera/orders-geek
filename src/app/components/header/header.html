@@ -1,2 +1,14 @@
-<button (click)="navigateToTable()">Main Table</button>
-<button (click)="navigateToOrder()">New Order</button>
+<header class="header">
+  <nav class="nav">
+    <button type="button" class="nav-button" (click)="navigateToTable()">Main Table</button>
+    <button type="button" class="nav-button" (click)="navigateToOrder()">New Order</button>
+  </nav>
+  <button
+    type="button"
+    class="theme-toggle"
+    [attr.aria-label]="'Switch to ' + (theme() === 'dark' ? 'light' : 'dark') + ' theme'"
+    (click)="toggleTheme()"
+  >
+    {{ theme() === 'dark' ? '☀' : '☾' }}
+  </button>
+</header>
