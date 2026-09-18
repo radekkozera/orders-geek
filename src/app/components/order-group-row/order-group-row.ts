@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 import { OrderGroup } from '../../services/state/state.domain';
 
@@ -9,4 +9,10 @@ import { OrderGroup } from '../../services/state/state.domain';
 })
 export class OrderGroupRow {
   public readonly group = input.required<OrderGroup>();
+  public readonly remove = output<string>();
+
+  protected onRemove(event: Event): void {
+    event.stopPropagation();
+    this.remove.emit(this.group().symbol);
+  }
 }

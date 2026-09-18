@@ -14,10 +14,14 @@
   </thead>
   <tbody>
     @for (group of groups(); track group.symbol) {
-      <app-order-group-row [group]="group" (click)="onToggle(group.symbol)" />
+      <app-order-group-row
+        [group]="group"
+        (click)="onToggle(group.symbol)"
+        (remove)="onRemoveGroup($event)"
+      />
       @if (expanded().includes(group.symbol)) {
         @for (order of group.orders; track order.id) {
-          <app-order-row [order]="order" />
+          <app-order-row [order]="order" (remove)="onRemoveOrder($event)" />
         }
       }
     } @empty {

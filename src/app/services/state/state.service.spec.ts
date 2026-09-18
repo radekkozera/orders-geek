@@ -113,7 +113,6 @@ describe('StateService', () => {
       service.updateQuotes([{ symbol: 'BTCUSD', bid: 110 }]);
 
       const btc = service.groups()[0];
-      // BUY: (110-100)*0.1*1 = 1 ; SELL: (110-200)*0.3*1*-1 = 27
       expect(btc?.orders.map((o) => o.profit)).toEqual([1, 27]);
       expect(btc?.profit).toBeCloseTo(28);
     });
@@ -122,7 +121,6 @@ describe('StateService', () => {
       service.updateQuotes([{ symbol: 'ETHUSD', bid: 9 }]);
 
       const eth = service.groups()[1];
-      // SELL: (9-10)*2*1000*-1 = 2000
       expect(eth?.profit).toBeCloseTo(2000);
     });
 
