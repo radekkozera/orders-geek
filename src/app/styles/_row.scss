@@ -20,13 +20,18 @@ td {
 
 .actions {
   width: 3rem;
-  text-align: center;
+  text-align: left;
 }
 
 .remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 26px;
+  height: 26px;
   border: 0;
   background: none;
-  padding: 0.25rem;
+  padding: 0 0 0 4px;
   color: var(--accent);
   font-size: 1rem;
   line-height: 1;
@@ -36,4 +41,11 @@ td {
   &:hover {
     background: var(--row-hover);
   }
+}
+
+.remove-icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
 }
