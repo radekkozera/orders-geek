@@ -1,12 +1,18 @@
-<td>{{ group().symbol }} ({{ group().count }})</td>
+<td class="toggle">
+  <span class="chevron" [class.chevron--open]="expanded()" aria-hidden="true"></span>
+</td>
+<td class="symbol">
+  <span class="symbol-name">{{ group().symbol }}</span>
+  <span class="count">{{ group().count }}</span>
+</td>
 <td></td>
 <td></td>
-<td>{{ group().size }}</td>
+<td class="numeric">{{ group().size | number: '1.0-5' }}</td>
 <td></td>
-<td>{{ group().avgOpenPrice }}</td>
-<td>{{ group().swap }}</td>
-<td>{{ group().profit ?? '—' }}</td>
-<td>
+<td class="numeric">{{ group().avgOpenPrice | number: '1.0-5' }}</td>
+<td class="numeric">{{ group().swap | number: '1.0-8' }}</td>
+<td class="numeric" [class]="group().profit | profitClass">{{ group().profit | number: '1.0-4' }}</td>
+<td class="actions">
   <button
     type="button"
     class="remove"

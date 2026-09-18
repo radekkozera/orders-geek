@@ -1,14 +1,11 @@
+@use '../../styles/row';
+
 :host {
   display: table-row;
 }
 
 td {
-  padding: 0.5rem 0.75rem;
-  text-align: left;
-}
-
-.remove {
-  border: 0;
-  background: none;
-  cursor: pointer;
+  padding-top: 0.45rem;
+  padding-bottom: 0.45rem;
+  font-size: 0.9rem;
 }

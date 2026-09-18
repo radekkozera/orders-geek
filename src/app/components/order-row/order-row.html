@@ -1,12 +1,13 @@
 <td></td>
+<td></td>
 <td>{{ order().id }}</td>
 <td>{{ order().side }}</td>
-<td>{{ order().size }}</td>
+<td class="numeric">{{ order().size | number: '1.0-5' }}</td>
 <td>{{ order().openTime | date: 'dd.MM.yyyy HH:mm:ss' }}</td>
-<td>{{ order().openPrice }}</td>
-<td>{{ order().swap }}</td>
-<td>{{ order().profit ?? '—' }}</td>
-<td>
+<td class="numeric">{{ order().openPrice | number: '1.0-5' }}</td>
+<td class="numeric">{{ order().swap | number: '1.0-8' }}</td>
+<td class="numeric" [class]="order().profit | profitClass">{{ order().profit | number: '1.0-4' }}</td>
+<td class="actions">
   <button
     type="button"
     class="remove"

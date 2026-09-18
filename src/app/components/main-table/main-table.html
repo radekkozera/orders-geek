@@ -1,14 +1,15 @@
 <table class="table">
   <thead>
     <tr>
+      <th class="toggle-col"></th>
       <th>Symbol</th>
       <th>Order ID</th>
       <th>Side</th>
-      <th>Size</th>
+      <th class="numeric">Size</th>
       <th>Open Time</th>
-      <th>Open Price</th>
-      <th>Swap</th>
-      <th>Profit</th>
+      <th class="numeric">Open Price</th>
+      <th class="numeric">Swap</th>
+      <th class="numeric">Profit</th>
       <th></th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
     @for (group of groups(); track group.symbol) {
       <app-order-group-row
         [group]="group"
+        [expanded]="expanded().includes(group.symbol)"
         (click)="onToggle(group.symbol)"
         (remove)="onRemoveGroup($event)"
       />
@@ -26,7 +28,7 @@
       }
     } @empty {
       <tr>
-        <td colspan="9">No orders</td>
+        <td class="empty" colspan="10">No orders</td>
       </tr>
     }
   </tbody>

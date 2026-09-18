@@ -1,18 +1,43 @@
+@use '../../styles/row';
+
 :host {
   display: table-row;
-}
-
-td {
-  padding: 0.5rem 0.75rem;
-  text-align: left;
-}
-
-:host {
   cursor: pointer;
+  background: var(--row-bg);
+  border-top: 1px solid var(--border);
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: var(--row-hover);
+  }
 }
 
-.remove {
-  border: 0;
-  background: none;
-  cursor: pointer;
+.symbol-name {
+  font-weight: 600;
+}
+
+.count {
+  display: inline-block;
+  min-width: 1.5rem;
+  margin-left: 0.75rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 999px;
+  background: var(--bg);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.chevron {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+
+  &--open {
+    transform: rotate(-135deg);
+  }
 }
