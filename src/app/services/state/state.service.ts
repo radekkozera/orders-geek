@@ -1,6 +1,6 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
 
-import { ContractType, Instrument, Order } from '../api.domain';
+import { Order } from '../api.domain';
 import { ApiService } from '../api/api.service';
 import { buildContractSizeMap, nextOrderId, toOrderGroup, toOrderRow } from './helpers';
 import {
