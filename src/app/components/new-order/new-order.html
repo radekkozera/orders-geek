@@ -1,1 +1,59 @@
-<div>new order form</div>
+<form class="x]form" [formRoot]="form">
+  <h2>New order</h2>
+
+  <label class="field">
+    <span>Symbol</span>
+    <select [formField]="form.symbol">
+      <option value="" disabled>Select symbol</option>
+      @for (symbol of symbols(); track symbol) {
+        <option [value]="symbol">{{ symbol }}</option>
+      }
+    </select>
+    @if (form.symbol().touched()) {
+      @for (error of form.symbol().errors(); track error.kind) {
+        <small class="error">{{ error.message }}</small>
+      }
+    }
+  </label>
+
+  <label class="field">
+    <span>Side</span>
+    <select [formField]="form.side">
+      @for (side of sides; track side) {
+        <option [value]="side">{{ side }}</option>
+      }
+    </select>
+  </label>
+
+  <label class="field">
+    <span>Size</span>
+    <input type="number" step="any" [formField]="form.size" />
+    @if (form.size().touched()) {
+      @for (error of form.size().errors(); track error.kind) {
+        <small class="error">{{ error.message }}</small>
+      }
+    }
+  </label>
+
+  <label class="field">
+    <span>Open price</span>
+    <input type="number" step="any" [formField]="form.openPrice" />
+    @if (form.openPrice().touched()) {
+      @for (error of form.openPrice().errors(); track error.kind) {
+        <small class="error">{{ error.message }}</small>
+      }
+    }
+  </label>
+
+  <label class="field">
+    <span>Open time</span>
+    <input type="datetime-local" step="1" [formField]="form.openTime" />
+    @if (form.openTime().touched()) {
+      @for (error of form.openTime().errors(); track error.kind) {
+        <small class="error">{{ error.message }}</small>
+      }
+    }
+  </label>
+
+  <button type="submit">Add order</button>
+</form>
