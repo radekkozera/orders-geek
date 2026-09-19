@@ -1,0 +1,6 @@
+@if (message(); as message) {
+  <div class="snackbar" role="status" aria-live="polite">
+    <span>{{ message }}</span>
+    <button type="button" class="dismiss" aria-label="Dismiss" (click)="dismiss()">✕</button>
+  </div>
+}
