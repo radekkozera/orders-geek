@@ -1,4 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { StateService } from '../../services/state/state.service';
 import { OrderGroupRow } from '../order-group-row/order-group-row';
@@ -12,6 +13,7 @@ import { OrderRow } from '../order-row/order-row';
 })
 export class MainTable {
   private readonly state = inject(StateService);
+  private readonly snackBar = inject(MatSnackBar);
 
   protected readonly groups = this.state.groups;
   protected readonly expanded = signal<string[]>([]);
@@ -23,11 +25,22 @@ export class MainTable {
   }
 
   protected onRemoveOrder(id: number): void {
-    this.state.removeOrder(id);
+    const closedId = this.state.removeOrder(id);
+    if (closedId !== undefined) {
+      this.notifyClosed([closedId]);
+    }
   }
 
   protected onRemoveGroup(symbol: string): void {
-    this.state.removeGroup(symbol);
+    const closedIds = this.state.removeGroup(symbol);
     this.expanded.update((symbols) => symbols.filter((s) => s !== symbol));
+    if (closedIds.length > 0) {
+      this.notifyClosed(closedIds);
+    }
+  }
+
+  private notifyClosed(ids: number[]): void {
+    const label = ids.length === 1 ? 'zlecenie' : 'zlecenia';
+    this.snackBar.open(`Zamknięto ${label} nr ${ids.join(', ')}`, 'OK', { duration: 4000 });
   }
 }
